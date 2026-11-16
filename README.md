@@ -1,32 +1,45 @@
 # Glass Card
 
-Une carte **glassmorphism** pour Home Assistant : effet verre dépoli, coins arrondis, toggle façon iOS.
-Une seule carte qui s'adapte toute seule à l'entité choisie.
+Des cartes **glassmorphism** pour Home Assistant : effet verre dépoli, coins arrondis, toggles façon iOS. Éditeur visuel pour chaque carte, aucune dépendance.
 
-| Type d'entité | Affichage | Appui court | Appui long |
-|---|---|---|---|
-| `switch`, `light`, `fan`, `input_boolean`, `automation`, `siren`, `humidifier` | icône + toggle + nom + état | allume / éteint | fenêtre de détail |
-| Tout le reste (`sensor`, `binary_sensor`, `climate`…) | icône + valeur + nom | fenêtre de détail | fenêtre de détail |
+![Dashboard Glass Card](https://raw.githubusercontent.com/mrcouscous49-ui/glass-card/main/images/dashboard.webp)
 
-Bonus : pour une lumière allumée, l'accent prend la vraie couleur de l'ampoule et la luminosité s'affiche (`Allumé · 80 %`).
+| Carte | Rôle |
+|---|---|
+| `glass-card` | Une tuile : interrupteur, lumière, capteur… |
+| `glass-grid-card` · `glass-grid-1-card` · `glass-grid-3-card` | Tuiles carrées regroupées (2, 1 ou 3 colonnes), titre optionnel |
+| `glass-thermostat-card` | Thermostat natif habillé en verre, avec pastille d'état |
+| `glass-clock-card` | Heure, date et fête du jour |
+| `glass-media-card` | Lecteur média : pochette floutée, volume façon Apple |
+| `glass-weather-card` | Météo façon Apple : maintenant, heure par heure, semaine |
+| `glass-members-card` · `glass-members-badge` | Présence des membres de la maison (carte ou badge) |
 
 ## Installation
 
-### Via HACS (recommandé)
+### Via le Marketplace (Home Assistant 2026.11 et plus)
 
-1. HACS → ⋮ → **Dépôts personnalisés**
+1. **Paramètres → Marketplace** → ⋮ → **Dépôts personnalisés**
 2. URL : `https://github.com/mrcouscous49-ui/glass-card` — Type : **Tableau de bord** (Dashboard)
 3. Cherchez **Glass Card** → **Télécharger**
 4. Rechargez la page (Ctrl+F5)
+
+Sur une version plus ancienne de Home Assistant, c'est la même chose depuis **HACS**.
 
 ### Manuelle
 
 1. Copiez `glass-card.js` dans `/config/www/`
 2. Paramètres → Tableaux de bord → ⋮ → **Ressources** → Ajouter `/local/glass-card.js` (type *Module JavaScript*)
 
-## Utilisation
+## Glass Card (une tuile)
 
-Modifier le dashboard → **Ajouter une carte** → cherchez **Glass Card** → choisissez votre entité. C'est tout.
+| Type d'entité | Affichage | Appui court | Appui long |
+|---|---|---|---|
+| `switch`, `light`, `fan`, `input_boolean`, `automation`, `siren`, `humidifier` | icône + toggle + nom + état | allume / éteint | fenêtre de détail |
+| Tout le reste (`sensor`, `binary_sensor`, `climate`…) | icône + valeur + nom | fenêtre de détail | fenêtre de détail |
+
+Pour une lumière allumée, l'accent prend la vraie couleur de l'ampoule et la luminosité s'affiche (`Allumé · 80 %`).
+
+Modifier le dashboard → **Ajouter une carte** → cherchez **Glass Card** → choisissez votre entité.
 
 En YAML :
 
@@ -62,6 +75,8 @@ opacity: 12
 ## Glass Grid Card : plusieurs interrupteurs dans un bloc
 
 Regroupe plusieurs tuiles dans un seul bloc de verre. Dans l'éditeur visuel, il suffit de choisir les entités.
+
+<img src="https://raw.githubusercontent.com/mrcouscous49-ui/glass-card/main/images/grids.webp" alt="Glass Grid Card" width="360">
 
 ```yaml
 type: custom:glass-grid-card
@@ -159,6 +174,8 @@ Les boutons s'adaptent à ce que l'appareil supporte, et sont masqués quand il 
 
 ## Glass Weather Card
 
+<img src="https://raw.githubusercontent.com/mrcouscous49-ui/glass-card/main/images/weather.png" alt="Glass Weather Card" width="420">
+
 Météo façon Apple : température actuelle, condition, min / max du jour, détails, prévisions heure par heure et sur plusieurs jours avec barres de températures.
 
 ```yaml
@@ -175,6 +192,8 @@ days: 5
 | `show_daily` / `days` | `true` / `5` | Prévisions par jour |
 
 ## Glass Members Card
+
+<img src="https://raw.githubusercontent.com/mrcouscous49-ui/glass-card/main/images/members.png" alt="Glass Members Badge" width="160">
 
 Les membres de la maison : photo de chaque personne, pastille **verte** quand elle est à la maison (grise et photo en noir et blanc sinon), et compteur `présents / total`. Un appui sur un avatar ouvre le détail de la personne.
 
