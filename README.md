@@ -39,6 +39,10 @@ Sur une version plus ancienne de Home Assistant, c'est la même chose depuis **H
 
 Pour une lumière allumée, l'accent prend la vraie couleur de l'ampoule et la luminosité s'affiche (`Allumé · 80 %`).
 
+Pour un capteur (température, humidité, consommation…), la tuile affiche sa valeur en grand à la place de l'interrupteur, seule ou dans une grille au milieu des boutons :
+
+<img src="https://raw.githubusercontent.com/mrcouscous49-ui/glass-card/main/images/sensors.png" alt="Capteur et interrupteurs dans une grille" width="420">
+
 Modifier le dashboard → **Ajouter une carte** → cherchez **Glass Card** → choisissez votre entité.
 
 En YAML :
@@ -88,6 +92,18 @@ entities:
   - entity: light.exterieur
     name: Lumière ext.
     icon: mdi:outdoor-lamp
+```
+
+Capteurs et interrupteurs peuvent être mélangés dans la même grille :
+
+```yaml
+type: custom:glass-grid-card
+title: Salon
+entities:
+  - sensor.salon_temperature
+  - sensor.salon_humidite
+  - switch.guirlande
+  - light.salon
 ```
 
 Chaque entité peut être un simple id, ou un objet avec `entity`, `name`, `icon`, `icon_on`, `color`, `icon_glow`, `show_state` pour la personnaliser.
