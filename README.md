@@ -14,6 +14,8 @@ Des cartes **glassmorphism** pour Home Assistant : effet verre dépoli, coins ar
 | `glass-weather-card` | Météo façon Apple : maintenant, heure par heure, semaine |
 | `glass-members-card` · `glass-members-badge` | Présence des membres de la maison (carte ou badge) |
 
+Va très bien avec [Glass Nav Card](https://github.com/mrcouscous49-ui/glass-nav-card).
+
 ## Installation
 
 ### Via le Marketplace (Home Assistant 2026.11 et plus)
