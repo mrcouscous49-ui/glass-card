@@ -7,7 +7,7 @@
  *  - capteurs (température, humidité…)     → tuile avec valeur
  */
 
-const VERSION = "0.7.2";
+const VERSION = "0.7.4";
 
 const TOGGLE_DOMAINS = [
   "switch",
@@ -28,7 +28,7 @@ const STRINGS = {
     name: "Nom (optionnel)",
     icon: "Icône (optionnel)",
     icon_on: "Icône quand allumé (optionnel)",
-    square: "Tuiles carrées",
+    square: "Format carré",
     color: "Couleur d'accent",
     blur: "Flou de l'arrière-plan",
     opacity: "Opacité du verre",
@@ -79,7 +79,7 @@ const STRINGS = {
     name: "Name (optional)",
     icon: "Icon (optional)",
     icon_on: "Icon when on (optional)",
-    square: "Square tiles",
+    square: "Square",
     color: "Accent color",
     blur: "Background blur",
     opacity: "Glass opacity",
@@ -142,6 +142,10 @@ const STYLE = `
     --gc-backdrop: blur(15px) saturate(1.3);
     --gc-opacity: 0.1;
     container-type: inline-size;
+  }
+  :host([square]) {
+    aspect-ratio: 1;
+    height: auto;
   }
   ha-card {
     position: relative;
@@ -321,7 +325,8 @@ class GlassCard extends HTMLElement {
     if (!config || !config.entity) {
       throw new Error(tr(this._hass, "required"));
     }
-    this._config = { blur: 15, opacity: 10, show_state: true, icon_glow: true, ...config };
+    this._config = { blur: 15, opacity: 10, show_state: true, icon_glow: true, square: true, ...config };
+    this.toggleAttribute("square", this._config.square !== false);
     this._build();
     this._update();
   }
@@ -339,8 +344,11 @@ class GlassCard extends HTMLElement {
     return 2;
   }
 
+  // Seule : carrée, de la même taille que les tuiles des grilles.
   getGridOptions() {
-    return { columns: 6, rows: 2, min_columns: 3, min_rows: 2 };
+    return this._config?.square === false
+      ? { columns: 6, rows: 2, min_columns: 3, min_rows: 2 }
+      : { columns: 4, rows: "auto", min_columns: 3 };
   }
 
   /* ---------- DOM ---------- */
@@ -663,6 +671,7 @@ class GlassGridCard extends HTMLElement {
         name: item.name,
         icon: item.icon,
         icon_on: item.icon_on,
+        square: false,
         color: item.color || cfg.color,
         show_state: item.show_state ?? cfg.show_state,
         icon_glow: item.icon_glow ?? cfg.icon_glow,
@@ -2037,6 +2046,7 @@ const CARD_SCHEMA = [
   { name: "name", selector: { text: {} } },
   { name: "icon", selector: { icon: {} }, context: { icon_entity: "entity" } },
   { name: "icon_on", selector: { icon: {} }, context: { icon_entity: "entity" } },
+  { name: "square", selector: { boolean: {} } },
   ...APPEARANCE_SCHEMA,
 ];
 
@@ -2125,7 +2135,7 @@ class GlassCardEditor extends GlassBaseEditor {
     return CARD_SCHEMA;
   }
   get _defaults() {
-    return { blur: 15, opacity: 10, show_state: true, icon_glow: true, color: DEFAULT_ACCENT };
+    return { blur: 15, opacity: 10, show_state: true, icon_glow: true, square: true, color: DEFAULT_ACCENT };
   }
 }
 

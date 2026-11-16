@@ -69,6 +69,7 @@ opacity: 12
 | `entity` | string | **obligatoire** | L'entité à afficher |
 | `name` | string | nom de l'entité | Nom affiché |
 | `icon` | string | icône de l'entité | Ex. `mdi:lamp` |
+| `square` | booléen | `true` | Tuile carrée, de la même taille que celles des grilles. `false` : rectangle 6 × 2 |
 | `icon_on` | string | = `icon` | Icône affichée quand c'est allumé (ex. `mdi:video` / `mdi:video-off`) |
 | `color` | `[r, g, b]` | vert iOS `[52, 199, 89]` | Couleur d'accent (toggle et icône actifs) |
 | `blur` | nombre (px) | `15` | Intensité du flou derrière la carte |
