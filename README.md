@@ -156,7 +156,11 @@ Le format 12 / 24 h et le fuseau horaire suivent le profil de l'utilisateur dans
 
 ## Glass Media Card
 
+<img src="https://raw.githubusercontent.com/mrcouscous49-ui/glass-card/main/images/media.png" alt="Glass Media Card" width="420">
+
 Lecteur média sans dépendance : titre, artiste et volume, barre de volume façon Apple (glisser pour régler), boutons précédent / lecture / suivant et pochette d'album floutée en fond.
+
+Fonctionne avec n'importe quelle entité `media_player` : barre de son (Bose, Sonos…), enceinte AirPlay, Apple TV, Chromecast, Spotify… Choisissez simplement l'entité dans l'éditeur.
 
 ```yaml
 type: custom:glass-media-card
