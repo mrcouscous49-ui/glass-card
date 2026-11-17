@@ -18,14 +18,19 @@ Va très bien avec [Glass Nav Card](https://github.com/mrcouscous49-ui/glass-nav
 
 ## Installation
 
-### Via le Marketplace (Home Assistant 2026.11 et plus)
+### Via le Marketplace (recommandé)
+
+Glass Card fait partie du catalogue officiel.
+
+1. **Paramètres → Marketplace** (ou **HACS** sur les versions de Home Assistant antérieures à 2026.11)
+2. Cherchez **Glass Card** → **Télécharger**
+3. Rechargez la page (Ctrl+F5)
+
+### Via un dépôt personnalisé (si la carte n'apparaît pas dans la recherche)
 
 1. **Paramètres → Marketplace** → ⋮ → **Dépôts personnalisés**
 2. URL : `https://github.com/mrcouscous49-ui/glass-card` — Type : **Tableau de bord** (Dashboard)
-3. Cherchez **Glass Card** → **Télécharger**
-4. Rechargez la page (Ctrl+F5)
-
-Sur une version plus ancienne de Home Assistant, c'est la même chose depuis **HACS**.
+3. Cherchez **Glass Card** → **Télécharger**, puis rechargez la page (Ctrl+F5)
 
 ### Manuelle
 
